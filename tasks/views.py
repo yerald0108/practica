@@ -39,8 +39,8 @@ def signup(request):
             'form': UserCreationForm,
             "error": 'Passworde do not match'   
         })               
-   
-     
+
+
 @login_required
 def tasks(request): 
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
@@ -131,3 +131,8 @@ def signin(request):
         else:
             login(request, user)
             return redirect('tasks')
+        
+
+@login_required
+def works(request):
+    return render(request, 'works.html')

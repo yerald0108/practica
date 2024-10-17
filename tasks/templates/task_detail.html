@@ -2,32 +2,42 @@
 
 {% block content %}
 
-    <h1>{{task.title}}</h1>
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-4">
 
-    {{error}}
+            <h1 class="text-secondary">{{task.title}}</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button>
-            Update
-        </button>
-    </form>
+            {{error}}
 
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary">
+                    Actualizar
+                </button>
+            </form>
+        
+            <div class="mt-5 d-flex">
+            
+                <form action="{% url 'complete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary">
+                        Completar
+                    </button>
+                </form>
+            
+                <form action="{% url 'delete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger ms-2">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+            
 
-    <form action="{% url 'complete_task' task.id %}" method="POST">
-        {% csrf_token %}
-        <button>
-            Complete
-        </button>
-    </form>
-
-    <form action="{% url 'delete_task' task.id %}" method="POST">
-        {% csrf_token %}
-        <button>
-            Delete
-        </button>
-    </form>
-    
+        </div>
+    </div>
+</main>
 
 {% endblock %}
