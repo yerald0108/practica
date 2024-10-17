@@ -10,7 +10,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="/">Navbar</a>
+          <a class="navbar-brand" href="/">CISOL</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -20,24 +20,30 @@
                     <a href="/" class="nav-link">Home</a>
                 </li>
                 {% if user.is_authenticated %}
+
                 <li class="nav-item">
-                    <a href="{% url 'tasks' %}" class="nav-link">Tareas Pendientes</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="{% url 'tasks_completed' %}" class="nav-link">Tareas Completadas</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="/tasks/create/" class="nav-link">Crear Tareas</a>
-                </li> 
+                    <a href="https://yerald0108.github.io/CISOL/" class="nav-link">Buscar</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Tareas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="/tasks/create/">Crear Tareas</a></li>
+                      <li><a class="dropdown-item" href="{% url 'tasks' %}">Tareas Pendientes</a></li>
+                      <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Tareas Completadas</a></li>
+                      </ul>
+                </li>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">Salir</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="/signup" class="nav-link">Signup</a>
+                    <a href="/signup" class="nav-link">Inscribirse</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/signin" class="nav-link">Signin</a>
+                    <a href="/signin" class="nav-link">Iniciar sesión</a>
                 </li>
                 {% endif %}
             </ul>
