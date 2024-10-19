@@ -1,0 +1,167 @@
+{% extends 'bases.html' %}
+
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<body>
+    
+    <div class="contenedor">
+
+        <header>
+            <div class="logo">
+                <h1>Game of Thrones</h1>
+                <p>Personajes</p>
+            </div>
+            <form action="">
+                <input type="text" class="barra-busqueda" id="barra-busqueda" placeholder="Buscar">
+            </form>
+            <div class="categorias" id="categorias">
+                <a href="#" class="activo">Todos</a>
+                <a href="#">Mujeres</a>
+                <a href="#">Hombres</a>
+                <a href="#">Ancianos</a>
+                <a href="#">Criaturas</a>
+            </div>
+        </header>
+        
+        <section class="grid" id="grid">
+            <div class="item" 
+                 data-categoria="mujeres"
+                 data-etiquetas="mujeres personas blanco ojos azules"
+                 data-descripcion="Daenerys Targaryen, conocida como La Que No Arde y Madre de Dragones, es un personaje central en la serie Juego de Tronos. Nacida como la hija póstuma del rey Aerys II Targaryen, su infancia estuvo marcada por el exilio y el abuso de su hermano Viserys. Daenerys es un símbolo de poder y ambición, cuya historia refleja tanto la lucha por el poder como las consecuencias de las decisiones tomadas en ese camino."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/Daenerys  Targaryen.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="hombres"
+                 data-etiquetas="personas hombres enano rizos barbas"
+                 data-descripcion="Tyrion Lannister es un personaje icónico de Juego de Tronos, conocido por su aguda inteligencia y su ingenio. Nacido como el tercer hijo de Lord Tywin Lannister, es un enano que enfrenta el rechazo y la burla, incluso de su propia familia, lo que lo lleva a desarrollar una personalidad compleja y astuta. Es un personaje que combina vulnerabilidad con astucia política, lo que lo convierte en uno de los favoritos entre los fans de la serie. Su viaje refleja temas de aceptación, poder y redención en un mundo implacable."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/1.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="mujeres"
+                 data-etiquetas="mujeres rubios"
+                 data-descripcion="Cersei Lannister es uno de los personajes más complejos y memorables de Juego de Tronos. Hija mayor de Lord Tywin Lannister, se convierte en reina al casarse con Robert Baratheon, aunque su verdadero amor es su hermano gemelo, Jaime, con quien mantiene una relación incestuosa que resulta en tres hijos, todos ellos de Jaime, aunque son criados como los legítimos herederos de Robert."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/2.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="hombres"
+                 data-etiquetas="hombres negro lobos"
+                 data-descripcion="Jon Snow es un personaje central en Juego de Tronos, conocido por su nobleza, valentía y sentido del deber. Hijo ilegítimo de Eddard Stark, crece en Invernalia sintiéndose marginado por su estatus como bastardo. Es un símbolo de honor y sacrificio en un mundo lleno de traiciones y conflictos, representando la lucha entre el deber personal y las lealtades familiares."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/3.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="hombres"
+                 data-etiquetas="espadas hombres rubios"
+                 data-descripcion="Jaime Lannister es uno de los personajes más complejos de Juego de Tronos. Conocido como el Matarreyes por haber asesinado al rey Aerys II Targaryen, es un guerrero excepcional y miembro de la familia Lannister, que incluye a su hermana Cersei y su hermano Tyrion. Es un personaje que encarna la lucha entre el deber familiar y la búsqueda de redención personal, convirtiéndose en una figura trágica en el complejo entramado político de Westeros."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/4.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="criaturas"
+                 data-etiquetas="criaturas ojos azules demonio"
+                 data-descripcion="El Rey de la Noche es el principal antagonista en Juego de Tronos, representando una amenaza sobrenatural para Westeros. Es el líder de los Caminantes Blancos, criaturas resucitadas que buscan conquistar el mundo. Este simboliza la lucha entre la vida y la muerte, así como las consecuencias del odio y la venganza. Su historia refleja temas de sacrificio y unidad frente a una amenaza común."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/5.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="ancianos"
+                 data-etiquetas="ancianos arrugas barbas canas"
+                 data-descripcion="Davos Seaworth, conocido como el Onion Knight, es un personaje clave en Juego de Tronos. Originalmente un contrabandista, Davos se convierte en un noble y leal consejero de Stannis Baratheon tras salvar su vida en la Batalla de Bastión de Tormentas. Representa el arquetipo del héroe humilde que busca redención a través del servicio y la lealtad, enfrentándose a dilemas morales en un mundo lleno de corrupción y traición."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/6.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item" 
+                 data-categoria="mujeres"
+                 data-etiquetas="mujeres pelo corto"
+                 data-descripcion="Bran Stark es un personaje central en Juego de Tronos, representando la resiliencia y el crecimiento personal en medio de la adversidad. Es el segundo hijo de Eddard Stark y Catelyn Stark, y su historia está marcada por eventos trágicos y transformaciones significativas. Es un símbolo de transformación y esperanza, representando cómo incluso aquellos que enfrentan las mayores adversidades pueden encontrar su camino hacia el poder y la sabiduría."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/7.jpg' %}" alt="">
+                </div>
+            </div>
+        
+            <div class="item"
+                 data-categoria="ancianos"
+                 data-etiquetas="calvicia ancianos arrugas canas"
+                 data-descripcion="Luwin es un personaje secundario en Juego de Tronos, conocido por ser el maestre de Invernalia y un consejero leal de la familia Stark. Su papel es fundamental en la educación y el asesoramiento de los Stark, especialmente de los jóvenes. Representa la sabiduría y el valor del conocimiento en tiempos de crisis, siendo una figura paternal para los jóvenes Stark en un mundo lleno de traiciones y conflictos."
+            >
+                <div class="item-contenido">
+                    <img src="{% static 'IMG/8.jpg' %}" alt="">
+                </div>
+            </div>
+        </section>
+        
+        <section class="overlay" id="overlay">
+            <div class="contenedor-img">
+                <button id="btn-cerrar-popup"><i class="ri-close-large-line"></i></button>
+                <img src="" alt="">
+            </div>
+            <p class="descripcion"></p>
+        </section>
+        
+        <footer class="contenedor">
+            <div class="redes-sociales">
+                <div class="contenedor-icono">
+                    <a href="https://twitter.com/gameofthrones?lang=es" target="_blank" class="twitter">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+                <div class="contenedor-icono">
+                    <a href="https://m.facebook.com/juegodetronos/" target="_blank" class="facebook">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                </div>
+                <div class="contenedor-icono">
+                    <a href="https://www.instagram.com/gameofthronesnotofficial?igsh=aWswbmhkcHcyNnlm" target="_blank" class="instagram">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="creado-por">
+                <p>Sitio diseñado por <a href="#">Midael Games</a> - <a href="#">Yerald González</a></p>
+            </div>
+        </footer>
+    
+    </div>
+
+    <script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
+	<script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+{% endblock %}

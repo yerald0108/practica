@@ -28,7 +28,7 @@ def signup(request):
                 password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('tasks')
+                return redirect('tasks_pending')
             except IntegrityError:
                 return render(request, 'signup.html', {
                     'form': UserCreationForm,
@@ -124,3 +124,6 @@ def signin(request):
             login(request, user)
             return redirect('tasks_pending')
 
+@login_required
+def search(request):
+    return render(request, 'search.html')

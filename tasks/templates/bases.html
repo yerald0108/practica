@@ -22,7 +22,7 @@
                 {% if user.is_authenticated %}
 
                 <li class="nav-item">
-                    <a href="https://yerald0108.github.io/CISOL/" class="nav-link">Buscar</a>
+                    <a href="{% url 'search' %}" class="nav-link">Buscar</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -43,7 +43,7 @@
                     <a href="/signup" class="nav-link">Inscribirse</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/signin" class="nav-link">Iniciar sesión</a>
+                    <a href="/signin" class="nav-link">Iniciar Sesión</a>
                 </li>
                 {% endif %}
             </ul>
