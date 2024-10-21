@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <main class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-4">
@@ -13,21 +14,21 @@
             <form method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" id="update">
                     Actualizar
                 </button>
             </form>
         
             <div class="mt-5 d-flex">
             
-                <form action="{% url 'complete_task' task.id %}" method="POST">
+                <form action="{% url 'complete_task' task.id %}" method="POST" id="complete">
                     {% csrf_token %}
                     <button class="btn btn-secondary">
                         Completar
                     </button>
                 </form>
             
-                <form action="{% url 'delete_task' task.id %}" method="POST">
+                <form action="{% url 'delete_task' task.id %}" method="POST" id="delete">
                     {% csrf_token %}
                     <button class="btn btn-danger ms-2">
                         Eliminar
@@ -39,5 +40,6 @@
         </div>
     </div>
 </main>
+
 
 {% endblock %}
