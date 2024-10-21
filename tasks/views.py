@@ -113,7 +113,7 @@ def create_task(request):
 @login_required
 def signout(request):
     logout(request)
-    return redirect('home')
+    return redirect('/?logout_success=true')
 
 def signin(request):
     if request.method == 'GET':
@@ -131,8 +131,7 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('tasks_pending')
-
+            return redirect('/?login_success=true')
 @login_required
 def search(request):
     return render(request, 'search.html')
