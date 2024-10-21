@@ -70,7 +70,6 @@ def task_detail(request, task_id):
                 'error': "Error al actualizar la tarea"
             })
 
-
 @login_required           
 def complete_task(request, task_id):
     task = get_object_or_404(Task, Q(pk=task_id) & (Q(user=request.user) | Q(assigned_to=request.user)))
