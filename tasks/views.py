@@ -17,29 +17,27 @@ def home(request):
 
 
 def signup(request):
-    
     if request.method == 'GET':
-        
         return render(request, 'signup.html', {
             'form': UserCreationForm
-    })
+        })
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
-                user = User.objects.create_user(username=request.POST['username'],
-                password=request.POST['password1'])
+                user = User.objects.create_user(
+                    username=request.POST['username'],
+                    password=request.POST['password1']
+                )
                 user.save()
                 login(request, user)
                 return redirect('/?signup_success=true')
             except IntegrityError:
-                return render(request, 'signup.html', {
-                    'form': UserCreationForm,
-                    "error": 'El usuario ya existe'
-                })
-        return render(request, 'signup.html', {
-            'form': UserCreationForm,
-            "error": 'La contraseña es incorrecta'   
-        })               
+                # Redirigir con parámetro de usuario ya existente
+                return redirect('/signup?user_exists=true')  
+        else:
+            return redirect('/signup?password_error=true')  # Redirigir con parámetro de error de contraseñas
+
+
 
 @login_required
 def tasks(request): 
@@ -125,10 +123,7 @@ def signin(request):
         user = authenticate(request, username=request.POST['username'],
         password=request.POST['password'])
         if user is None: 
-            return render(request, 'signin.html', {
-            'form': AuthenticationForm,
-            'error': 'Username or password is incorrect'
-            })
+            return redirect(f'/signin/?error=Username%20or%20password%20is%20incorrect')
         else:
             login(request, user)
             return redirect('/?login_success=true')
