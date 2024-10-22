@@ -1,9 +1,13 @@
-.navbar-toogler {
+.content-class {
+    
+}
+
+.navbar-toggler {
     border: none;
     font-size: 1.25rem;
 }
 
-.navbar-toogler:focus {
+.navbar-toggler:focus {
     box-shadow: none;
     outline: none;
 }
@@ -33,7 +37,7 @@
     }
     
     .nav-link:hover::before, .nav-link.active::before {
-        width: 100%;
+        width: 50%;
         visibility: visible;
     }
 }

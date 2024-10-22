@@ -8,6 +8,7 @@ from .models import Task
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.urls import reverse
 
 
 # Create your views here.
@@ -29,15 +30,15 @@ def signup(request):
                 password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('tasks_pending')
+                return redirect('/?signup_success=true')
             except IntegrityError:
                 return render(request, 'signup.html', {
                     'form': UserCreationForm,
-                    "error": 'Username already exists'
+                    "error": 'El usuario ya existe'
                 })
         return render(request, 'signup.html', {
             'form': UserCreationForm,
-            "error": 'Passworde do not match'   
+            "error": 'La contraseña es incorrecta'   
         })               
 
 @login_required
@@ -62,7 +63,7 @@ def task_detail(request, task_id):
             task = get_object_or_404(Task, Q(pk=task_id) & (Q(user=request.user) | Q(assigned_to=request.user)))
             form = TaskForm(request.POST, instance=task)
             form.save()
-            return redirect('tasks_pending')
+            return redirect(f"{reverse('tasks_pending')}?task_updated=true")
         except ValueError:
             return render(request, 'task_detail.html', {
                 'task': task,
@@ -76,15 +77,14 @@ def complete_task(request, task_id):
     if request.method == 'POST':
         task.datecompleted = timezone.now()
         task.save()
-        return redirect('tasks_pending')
-
+        return redirect(f"{reverse('tasks_pending')}?task_completed=true")
 
 @login_required 
 def delete_task(request, task_id):
     task = get_object_or_404(Task, Q(pk=task_id) & (Q(user=request.user) | Q(assigned_to=request.user)))
     if request.method == 'POST':
         task.delete()
-        return redirect('tasks_pending')
+        return redirect(f"{reverse('tasks_pending')}?task_deleted=true")
 
 
 @login_required  
@@ -103,7 +103,7 @@ def create_task(request):
             if form.cleaned_data['assigned_to']:
                 new_task.assigned_to = form.cleaned_data['assigned_to']
             new_task.save()
-            return redirect('tasks_pending')
+            return redirect(f"{reverse('tasks_pending')}?task_created=true")
         except ValueError:
             return render(request, 'create_task.html', {
                 'form': TaskForm,
@@ -132,6 +132,7 @@ def signin(request):
         else:
             login(request, user)
             return redirect('/?login_success=true')
+        
 @login_required
 def search(request):
     return render(request, 'search.html')

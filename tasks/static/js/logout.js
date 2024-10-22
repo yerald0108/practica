@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logoutLink').addEventListener('click', function(event) {
-        event.preventDefault(); // Previene el comportamiento predeterminado del enlace
+        event.preventDefault(); 
         
-        // Mostrar notificación usando Toastify
+
         Swal.fire({
             title: "¿Estas seguro?",
             icon: "question",
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cancelButtonText: `No`,
           }).then((result) => {
 
-            /* Read more about isConfirmed, isDenied below */
+            
             if (result.isConfirmed) {
                 window.location.href = '/logout'
             }
@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
     });
 });
-
-// Detectar si el parámetro 'logout_success' o 'login_success' está en la URL
+// Detectar si los parámetros 'logout_success', 'login_success' o 'signup_success' están en la URL
 const urlParams = new URLSearchParams(window.location.search);
 
 if (urlParams.has('logout_success')) {
@@ -43,9 +42,6 @@ if (urlParams.has('logout_success')) {
         showCancelButton: false,
         showCloseButton: false,
         closeButtonAriaLabel: 'Cerrar esta alerta',
-        customClass: {
-            content: 'content-class'
-        }
     });
 }
 
@@ -67,9 +63,28 @@ if (urlParams.has('login_success')) {
         showCancelButton: false,
         showCloseButton: false,
         closeButtonAriaLabel: 'Cerrar esta alerta',
-        customClass: {
-            content: 'content-class'
-        }
     });
 }
+
+if (urlParams.has('signup_success')) {
+    Swal.fire({
+        html: 'Cuenta creada con éxito',
+        icon: 'success',
+        confirmButtonText: 'Acepto',
+        padding: '1rem',
+        backdrop: true,
+        timer: 2000,
+        timerProgressBar: true,
+        toast: true,
+        position: 'bottom-end',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        stopKeydownPropagation: false,
+        showConfirmButton: true,
+        showCancelButton: false,
+        showCloseButton: false,
+        closeButtonAriaLabel: 'Cerrar esta alerta',
+    });
+}
+
 
